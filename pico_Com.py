@@ -203,8 +203,9 @@ assert_pico_ok(status["close"])
 with open('channel_A_data', 'wb') as handle:
     pickle.dump(adc2mVChAMax, handle)
 
+
 # save background noise
-background_noise = True
+background_noise = False
 if background_noise:
-    with open('gold_nano_antenas_on_vo2_sample_1/background_noise', 'wb') as handle:
+    with open('pure_vo2_sample_1/background_noise', 'wb') as handle:
         pickle.dump(adc2mVChAMax, handle)
