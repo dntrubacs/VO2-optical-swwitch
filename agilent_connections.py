@@ -30,8 +30,8 @@ def write_laser_amplitude(laser_power) -> float:
 if __name__ == '__main__':
     # agilent laser
 
-    for power in np.arange(5, 37):
+    for power in np.arange(5, 10):
         time_now = time.time()
         response = write_laser_amplitude(laser_power=power)
         print('laser power:', response, ' mW at time: ', time_now)
-        time.sleep(15)
+        time.sleep(1)
