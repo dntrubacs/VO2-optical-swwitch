@@ -46,9 +46,9 @@ for laser_power in np.arange(5, 37, 0.3):
 
     # save the data with pickle
     # Display status returns
-    with open('pure_vo2_sample_6/input_laser_power', 'wb') as handle:
+    with open('pure_vo2_sample_7/input_laser_power', 'wb') as handle:
         pickle.dump(np.array(laser_powers_list), handle)
-    with open('pure_vo2_sample_6/transmitted_laser_power', 'wb') as handle:
+    with open('pure_vo2_sample_7/transmitted_laser_power', 'wb') as handle:
         pickle.dump(np.array(pd_data_list), handle)
 
 
