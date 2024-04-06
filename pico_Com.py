@@ -205,7 +205,7 @@ with open('channel_A_data', 'wb') as handle:
 
 
 # save background noise
-background_noise = False
+background_noise = True
 if background_noise:
-    with open('pure_vo2_sample_11/background_noise', 'wb') as handle:
+    with open('pure_vo2_sample_12/background_noise', 'wb') as handle:
         pickle.dump(adc2mVChAMax, handle)
