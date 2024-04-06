@@ -6,7 +6,14 @@ from utils import load_transmitted_power
 input_laser_power_list = []
 transmitted_laser_power_list = []
 
-for i in [3, 4, 5, 6, 7]:
+
+# the cutoff data point for taking the average
+average_cutoff = 107
+
+# the average transmitted power
+average_transmitted_power = np.zeros(shape=(average_cutoff, ))
+
+for i in [3, 4, 5, 7, 8, 9]:
     # load the values
     input_laser_power, transmitted_laser_power = load_transmitted_power(
         file_path=f'pure_vo2_sample_{i}'
@@ -16,11 +23,16 @@ for i in [3, 4, 5, 6, 7]:
     input_laser_power_list.append(input_laser_power)
     transmitted_laser_power_list.append(transmitted_laser_power)
 
+    # find the average
+    average_transmitted_power += transmitted_laser_power[0:average_cutoff]
+
+# divide by the number of measurements to take find the average
+average_transmitted_power /= len(input_laser_power_list)
 
 # used for plotting only
 # transmitted power
-min_transmitted_power = 0.003
-max_transmitted_power = 0.035
+min_transmitted_power = 0.001
+max_transmitted_power = 0.041
 
 # the highlighted switching region
 switching_region = np.arange(
@@ -38,7 +50,14 @@ max_input_power = 36.8
 plt.figure(figsize=(12, 8))
 for i in range(len(input_laser_power_list)):
     plt.plot(input_laser_power_list[i], transmitted_laser_power_list[i],
-             label=f'sample {i}')
+             label=f'sample {i}', lw=0.7
+             )
+
+# plot the average transmitted power
+plt.plot(
+    input_laser_power[0:average_cutoff], average_transmitted_power,
+    color='black', lw=3, label='average'
+)
 
 # put limits on the data
 plt.xlim([min_input_power, max_input_power])
