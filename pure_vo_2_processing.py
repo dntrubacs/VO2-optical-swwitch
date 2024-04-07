@@ -20,7 +20,7 @@ fit_2_start = 41
 # the average transmitted power
 average_transmitted_power = np.zeros(shape=(average_cutoff, ))
 
-for i in [3, 4, 5, 7, 8, 9, 10, 12, 13]:
+for i in [3, 4, 5, 7, 8, 9, 10]:
     # load the values
     input_laser_power, transmitted_laser_power = load_transmitted_power(
         file_path=f'pure_vo2_sample_{i}'
