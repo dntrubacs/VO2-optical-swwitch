@@ -1,6 +1,10 @@
 import numpy as np
 
 
+def linear(x, m, n):
+    return m*x + n
+
+
 def load_transmitted_power(file_path: str) -> tuple:
     """
 
